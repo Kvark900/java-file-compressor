@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <title>File Compressor</title>
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+          integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+            integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron jumbotron-fluid mt-3">
+        <div class="container">
+            <h1 class="display-5">Compressing and Decompressing Data Using Java APIs</h1>
+            <p class="lead mx-5">
+                Java provides the java.util.zip package for zip-compatible data compression.
+                It provides classes that allow you to read, create, and modify ZIP and GZIP file formats.
+                It also provides utility classes for computing checksums of arbitrary input streams that
+                can be used to validate input data. This package provides one interface, fourteen classes,
+                and two exception classes.
+            </p>
+            <p class="lead mx-5">
+            </p>
+        </div>
+    </div>
+    <div class="content mt-3">
+        <div id="compressDiv" class="m-3">
+            <h3>Upload file to compress</h3>
+            <form th:action="@{/compressFile}" th:method="post" style="max-width: 40%;" enctype="multipart/form-data">
+                <input type="file" class="form-control-file" id="fileToCompress" name="fileToCompress"/>
+                <input type="submit" value="Compress"/>
+            </form>
+            <span th:if="${noFileSelectedToCompress}" style="color: red">Please select a file to compress</span>
+        </div>
+        <div id="decompressDiv" class="m-3">
+            <h3>Upload file to decompress</h3>
+            <form th:action="@{/decompressFile}" th:method="post" style="max-width: 40%;" enctype="multipart/form-data">
+                <input type="file" class="form-control-file" id="fileToDecompress" name="fileToDecompress"/>
+                <input type="submit" value="Decompress"/>
+            </form>
+            <span th:if="${noFileSelectedToDeCompress}" style="color: red">Please select a file to decompress</span>
+        </div>
+    </div>
+</div>
+
+
+<!--
+<script th:src="@{https://code.jquery.com/jquery-3.2.1.slim.min.js}"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js}"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+-->
+</body>
+</html>
