@@ -16,7 +16,7 @@ Spring MVC web app for file compression/decompression  with Java API
   Optionally, you can set **M2\_HOME** environment varible, and also do not forget to append *&lt;Maven Installation dir>/bin* your **PATH** environment variable.  
   
 ## Running the project
-* Use the maven-embedded-glassfish-plugin: `mvn clean install`
+Use the maven-embedded-glassfish-plugin: `mvn clean install`
 
 ## Viewing the running application
 To view the running application, visit [http://localhost:8080/file-compressor](http://localhost:8080/file-compressor) in your browser
