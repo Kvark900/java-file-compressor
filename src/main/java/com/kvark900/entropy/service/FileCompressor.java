@@ -15,7 +15,7 @@ import java.util.zip.ZipOutputStream;
 @Service
 public class FileCompressor {
 
-    public void compress1(InputStream inputStream, String fileName, File compressed) throws IOException {
+    public void compress(InputStream inputStream, String fileName, File compressed) throws IOException {
         FileOutputStream fos = new FileOutputStream(compressed.getName());
         ZipOutputStream zipOut = new ZipOutputStream(fos);
         ZipEntry zipEntry = new ZipEntry(fileName);

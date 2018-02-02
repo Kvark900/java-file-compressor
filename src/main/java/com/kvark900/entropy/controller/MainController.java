@@ -56,7 +56,7 @@ public class MainController {
 
             //compressing file
             File compressedFile = new File(compressedFilePath);
-            fileCompressor.compress1(file.getInputStream(), file.getOriginalFilename(), compressedFile);
+            fileCompressor.compress(file.getInputStream(), file.getOriginalFilename(), compressedFile);
 
             //downloading compressed file
             fileDownloader.downloadFile(compressedFile, response);
