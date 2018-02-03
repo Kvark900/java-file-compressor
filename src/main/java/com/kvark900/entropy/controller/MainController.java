@@ -3,6 +3,7 @@ package com.kvark900.entropy.controller;
 import com.kvark900.entropy.service.FileCompressor;
 import com.kvark900.entropy.service.FileDecompressor;
 import com.kvark900.entropy.service.FileDownloader;
+import com.kvark900.entropy.service.ZipFileValidator;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,12 +27,14 @@ public class MainController {
     private FileCompressor fileCompressor;
     private FileDecompressor fileDecompressor;
     private FileDownloader fileDownloader;
+    private ZipFileValidator zipFileValidator;
 
     @Autowired
-    public MainController(FileCompressor fileCompressor, FileDecompressor fileDecompressor, FileDownloader fileDownloader) {
+    public MainController(FileCompressor fileCompressor, FileDecompressor fileDecompressor, FileDownloader fileDownloader, ZipFileValidator zipFileValidator) {
         this.fileCompressor = fileCompressor;
         this.fileDecompressor = fileDecompressor;
         this.fileDownloader = fileDownloader;
+        this.zipFileValidator = zipFileValidator;
     }
 
     @RequestMapping("/")
@@ -60,6 +63,9 @@ public class MainController {
 
             //downloading compressed file
             fileDownloader.downloadFile(compressedFile, response);
+
+            compressedFile.delete();
+
             return "home";
         }
     }
@@ -72,6 +78,10 @@ public class MainController {
             model.addAttribute("noFileSelectedToDeCompress", true);
             return "home";
         }
+        if (!zipFileValidator.isValid(file)){
+            model.addAttribute("invalidZipFile", true);
+            return "home";
+        }
 
         else{
             //decompressing file
@@ -79,6 +89,8 @@ public class MainController {
 
             //downloading decompressed file
             fileDownloader.downloadFile(decompressedFile, response);
+
+            decompressedFile.delete();
             return "home";
         }
     }
