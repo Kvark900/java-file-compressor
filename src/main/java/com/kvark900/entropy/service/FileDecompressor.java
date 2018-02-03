@@ -15,7 +15,6 @@ import java.util.zip.ZipInputStream;
 @Service
 public class FileDecompressor {
 
-
     public File decompress (InputStream inputStream) throws IOException {
         byte[] buffer = new byte[1024];
         ZipInputStream zis = new ZipInputStream(inputStream);

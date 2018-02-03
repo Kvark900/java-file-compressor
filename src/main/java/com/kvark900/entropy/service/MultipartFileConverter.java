@@ -15,11 +15,11 @@ public class MultipartFileConverter {
 
     public File convert(MultipartFile file)
     {
-        File convFile = new File(file.getOriginalFilename());
+        File convertedFile = new File(file.getOriginalFilename());
         FileOutputStream fos = null;
         try {
-            convFile.createNewFile();
-            fos = new FileOutputStream(convFile);
+            convertedFile.createNewFile();
+            fos = new FileOutputStream(convertedFile);
             fos.write(file.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
@@ -32,6 +32,6 @@ public class MultipartFileConverter {
                 e.printStackTrace();
             }
         }
-        return convFile;
+        return convertedFile;
     }
 }
