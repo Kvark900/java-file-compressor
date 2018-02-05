@@ -66,7 +66,7 @@ public class MainController {
 
             compressedFile.delete();
 
-            return "home";
+            return null;
         }
     }
 
@@ -91,7 +91,7 @@ public class MainController {
             fileDownloader.downloadFile(decompressedFile, response);
 
             decompressedFile.delete();
-            return "home";
+            return null;
         }
     }
 }
